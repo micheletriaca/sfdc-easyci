@@ -2,7 +2,7 @@ let clear = require('clear')
 let chalk = require('chalk')
 let figlet = require('figlet')
 let auth = require('./lib/auth.js')
-let prefs = require('./lib/prefs.js')
+let projectStore = require('./lib/project-store.js')
 let _ = require('lodash')
 let inquirer = require('inquirer')
 let fileUtils = require('./lib/files.js')
@@ -20,7 +20,9 @@ if (!fileUtils.fileExists('./src/package.xml')) {
   return
 }
 
-let orgs = prefs.creds || {}
+let currentPrj = projectStore.getProject() || {}
+let orgs = {}
+if(currentPrj) orgs[currentPrj.path] = currentPrj
 
 inquirer.prompt([
   {
