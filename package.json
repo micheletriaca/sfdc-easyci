@@ -20,9 +20,11 @@
     "lodash": "^4.17.4",
     "preferences": "^0.2.1",
     "progress-stream": "^1.2.0",
+    "request-progress": "^3.0.0",
     "smart-zip": "0.0.9",
     "stream-to-buffer": "^0.1.0",
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.17",
+    "xml2js-es6-promise": "^1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
