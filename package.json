@@ -18,6 +18,7 @@
     "inquirer": "^3.0.6",
     "jsforce": "^1.7.1",
     "lodash": "^4.17.4",
+    "moment": "^2.17.1",
     "preferences": "^0.2.1",
     "progress-stream": "^1.2.0",
     "request-progress": "^3.0.0",
