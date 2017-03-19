@@ -17,12 +17,12 @@ console.log(
 
 if (!fileUtils.fileExists('./src/package.xml')) {
   console.log(chalk.red('Current directory is not a Salesforce project!'))
-  return
+  process.exit()
 }
 
 let currentPrj = projectStore.getProject() || {}
 let orgs = {}
-if(currentPrj) orgs[currentPrj.path] = currentPrj
+if (currentPrj) orgs[currentPrj.path] = currentPrj
 
 inquirer.prompt([
   {
