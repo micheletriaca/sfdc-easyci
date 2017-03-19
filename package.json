@@ -5,7 +5,8 @@
   "main": "ci.js",
   "scripts": {
     "eslint": "eslint ci.js lib",
-    "test": "JASMINE_CONFIG_PATH=test/jasmine.json node_modules/istanbul/lib/cli.js cover node_modules/jasmine/bin/jasmine.js"
+    "test": "JASMINE_CONFIG_PATH=test/jasmine.json node_modules/istanbul/lib/cli.js cover node_modules/jasmine/bin/jasmine.js",
+    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "Michele Triaca <michele.triaca@gmail.com>",
   "license": "MIT",
