@@ -54,7 +54,7 @@ inquirer.prompt([
     case 'retrieve':
       return require('./lib/retrieve.js')(conn).retrieve()
     case 'deploy':
-      break
+      return require('./lib/deploy.js')(conn).deploy()
   }
 })
 .catch(err => {
