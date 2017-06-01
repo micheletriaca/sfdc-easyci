@@ -1,11 +1,11 @@
-let clear = require('clear')
-let chalk = require('chalk')
-let figlet = require('figlet')
-let auth = require('./lib/auth.js')
-let projectStore = require('./lib/project-store.js')
-let _ = require('lodash')
-let inquirer = require('inquirer')
-let fileUtils = require('./lib/files.js')
+const clear = require('clear')
+const chalk = require('chalk')
+const figlet = require('figlet')
+const auth = require('./lib/auth.js')
+const projectStore = require('./lib/project-store.js')
+const _ = require('lodash')
+const inquirer = require('inquirer')
+const fileUtils = require('./lib/files.js')
 let conn
 
 clear()
@@ -20,8 +20,8 @@ if (!fileUtils.fileExists('./src/package.xml')) {
   process.exit()
 }
 
-let currentPrj = projectStore.getProject() || {}
-let orgs = {}
+const currentPrj = projectStore.getProject() || {}
+const orgs = {}
 if (currentPrj) orgs[currentPrj.path] = currentPrj
 
 inquirer.prompt([
