@@ -15,7 +15,8 @@ program
 .option('-p, --path [path]', 'Specify path [.]', '.')
 .parse(process.argv)
 
-let packagexmlPath = program.path + '/src/'
+if (program.path !== '.') fileUtils.directoryBase = program.path
+let packagexmlPath = fileUtils.getCurrentDirectoryBase() + '/src/package.xml'
 
 clear()
 console.log(
@@ -26,7 +27,7 @@ console.log(
 
 console.log('Working with: ' + packagexmlPath)
 
-if (!fileUtils.fileExists(packagexmlPath + 'package.xml')) {
+if (!fileUtils.fileExists(packagexmlPath)) {
   console.log(chalk.red('Current directory is not a Salesforce project!'))
   process.exit()
 }
@@ -47,7 +48,7 @@ inquirer.prompt([
 // Check path is still correct
 .then(c => {
   conn = c
-  if (!fileUtils.fileExists(packagexmlPath + 'package.xml')) {
+  if (!fileUtils.fileExists(packagexmlPath)) {
     throw new Error('Current directory is not a Salesforce project!')
   } else {
     return inquirer.prompt([
@@ -63,9 +64,9 @@ inquirer.prompt([
 .then(fData => {
   switch (fData.operation) {
     case 'retrieve':
-      return require('./lib/retrieve.js')(conn, packagexmlPath).retrieve()
+      return require('./lib/retrieve.js')(conn).retrieve()
     case 'deploy':
-      return require('./lib/deploy.js')(conn, packagexmlPath).deploy()
+      return require('./lib/deploy.js')(conn).deploy()
   }
 })
 .catch(err => {
